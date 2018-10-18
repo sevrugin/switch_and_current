@@ -9,14 +9,16 @@ class Switch
     int _button_pin;
     int _switch_pin;
     int _switch_status;
+    int _button_status = 0;
   public:
     Switch(int buttonPin, int switchPin);
     boolean on();
     boolean off();
     int toggle();
     int getStatus();
-    boolean check();
+    void check();
     int getSwitchPin();
+    int getButtonPin();
 };
 
 #endif

@@ -5,7 +5,10 @@ Switch::Switch(int buttonPin, int switchPin)
 {
   this->_button_pin = buttonPin;
   this->_switch_pin = switchPin;
+  
   pinMode(switchPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+  
   this->off();
 };
 
@@ -33,8 +36,20 @@ int Switch::getStatus() {
   return this->_switch_status;
 };
 
-boolean Switch::check() {};
+void Switch::check() {
+  int pressed = digitalRead(this->_button_pin);
+  //int pressed = this->_button_status == HIGH? LOW: HIGH;
+
+  if (pressed != this->_button_status && pressed == HIGH) {
+      this->toggle();
+  }
+  this->_button_status = pressed;
+};
 
 int Switch::getSwitchPin() {
   return this->_switch_pin;
 };
+
+int Switch::getButtonPin() {
+  return this->_button_pin;
+}
