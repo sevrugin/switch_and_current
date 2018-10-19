@@ -120,15 +120,13 @@ String getI2CStatus() {
       b[i] = switches[i].getStatus();
     }
   }  
+  result = b;
   
-  char c[2];
-  int value = 255;
-  int i1 = (floor)(value/100);
-  int i2 = value - i1*100;
-  c[0] = i1;
-  c[1] = i2;
-  
-  result = String(b) + String(c);
+  int value = 1022;
+  byte highbyte=value>>8; //shift right 8 bits, leaving only the 8 high bits. 
+  byte lowbyte=value & 0xFF; //bitwise AND with 0xFF  
+  result += char(highbyte);
+  result += char(lowbyte);
   
   return result;
 }
