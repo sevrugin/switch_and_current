@@ -1,7 +1,7 @@
+#include "config.h"
 #include "switch.h"
 #include <Arduino.h>
 #include <Wire.h> 
-
 
 
 Switch switches[] = {
@@ -141,7 +141,7 @@ void printList() {
     Serial.print("\t\t| ");
     Serial.print(switches[i].getSwitchPin());
     Serial.print("\t\t| ");
-    Serial.println(switches[i].getStatus());
+    Serial.println(switches[i].getStatus()? 'on': 'off');
   }  
 }
   

@@ -1,5 +1,6 @@
 #include "switch.h"
 #include "Arduino.h"
+#include "config.h"
 
 Switch::Switch(int buttonPin, int switchPin)
 {
@@ -14,12 +15,12 @@ Switch::Switch(int buttonPin, int switchPin)
 
 boolean Switch::on() {
   this->_switch_status = 1;
-  digitalWrite(this->_switch_pin, HIGH);
+  digitalWrite(this->_switch_pin, SWITCH_MODE? HIGH: LOW);
 };
 
 boolean Switch::off() {
   this->_switch_status = 0;
-  digitalWrite(this->_switch_pin, LOW);
+  digitalWrite(this->_switch_pin, SWITCH_MODE? LOW: HIGH);
 };
 
 int Switch::toggle() {
