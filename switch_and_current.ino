@@ -5,13 +5,20 @@
 
 
 Switch switches[] = {
-  Switch(1, 13),
+  Switch(4, 2),
+  Switch(5, 3),
+  Switch(6, 30),
+  Switch(7, 8),
+  Switch(10, 29),
+  Switch(11, 28),
+  Switch(12, 27),
+  Switch(13, 26)
 };
 
 void setup() {
   Serial.begin(9600);
   Serial.setTimeout(50);
-  Wire.begin(2);                // join i2c bus with address #2 
+  Wire.begin(I2C_ARRDESS);                // join i2c bus with address #2 
   // Wire.onRequest(requestEvents);
   // Wire.onReceive(receiveEvents);
 }
